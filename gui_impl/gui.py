@@ -110,7 +110,7 @@ class MainWidget(QtWidgets.QWidget):
         axs.set_ylabel("F(x)")
         axs.grid(True)
         axs.plot(x, z, label="F(x)")
-        axs.plot(x, [z[min_index]] * len(x) , label="Точки испытаний", marker="o", ls="")
+        axs.plot(x, [z[min_index]] * len(x) , label="Точка испытания", marker="o", ls="")
         axs.legend(title="Легенда", loc="best")
         fig.show()
 
