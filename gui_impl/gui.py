@@ -89,6 +89,7 @@ class MainWidget(QtWidgets.QWidget):
         self.__grid.addWidget(button, 7, 0, 1, 2)
 
     def __connect_button(self):
+        plt.close("all")
         f_text = self.__input_fx.text().strip()
         f = lambda x: eval(f_text.replace("x", str(x)))
         left, right = [float(x) for x in self.__input_x.text().strip().split(";")]
@@ -104,7 +105,6 @@ class MainWidget(QtWidgets.QWidget):
 
         x, z, min_index, curr_iter = self.__curr_method.calculate()
 
-        plt.close("all")
         fig, axs = plt.subplots(num="График функции F(x)")
         axs.set_xlabel("x")
         axs.set_ylabel("F(x)")
@@ -112,11 +112,11 @@ class MainWidget(QtWidgets.QWidget):
         axs.plot(x, z, label="F(x)")
         axs.plot(x, [z[min_index]] * len(x) , label="Точка испытания", marker="o", ls="")
         axs.legend(title="Легенда", loc="best")
-        plt.show()
 
         self.__x_result.setText(str(x[min_index]))
         self.__f_result.setText(str(z[min_index]))
         self.__iter_result.setText(str(curr_iter))
+        plt.show()
 
     def __init_x_result(self):
         x_result_label = QtWidgets.QLabel()
