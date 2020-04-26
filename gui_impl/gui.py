@@ -38,7 +38,7 @@ class MainWidget(QtWidgets.QWidget):
         input_label.setText("F(x) = ")
         self.__grid.addWidget(input_label, 1, 0, 1, 1)
         self.__input_fx = QtWidgets.QLineEdit()
-        self.__input_fx.setText("x")
+        self.__input_fx.setText("2*sin(3*x)+3*cos(5*x)")
         self.__grid.addWidget(self.__input_fx, 1, 1, 1, 1)
 
     def __init_x_borders(self):
@@ -89,9 +89,9 @@ class MainWidget(QtWidgets.QWidget):
         self.__grid.addWidget(button, 7, 0, 1, 2)
 
     def __connect_button(self):
-        f_text = self.__input_fx.text()
+        f_text = self.__input_fx.text().strip()
         f = lambda x: eval(f_text.replace("x", str(x)))
-        left, right = [int(x) for x in self.__input_x.text().split(";")]
+        left, right = [float(x) for x in self.__input_x.text().strip().split(";")]
         r = float(self.__input_r.text())
         eps = float(self.__input_e.text())
         iter = int(self.__input_iter.text())
