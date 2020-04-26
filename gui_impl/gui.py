@@ -112,7 +112,7 @@ class MainWidget(QtWidgets.QWidget):
         axs.plot(x, z, label="F(x)")
         axs.plot(x, [z[min_index]] * len(x) , label="Точка испытания", marker="o", ls="")
         axs.legend(title="Легенда", loc="best")
-        fig.show()
+        plt.show()
 
         self.__x_result.setText(str(x[min_index]))
         self.__f_result.setText(str(z[min_index]))
